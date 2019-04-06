@@ -75,7 +75,7 @@ export async function updateTodo(id, { title, completed, due } = {}) {
  * @returns {array} Fylki af verkefnum
  */
 export async function getTodos(hideCompleted = undefined) {
-  const url = hideCompleted ? new URL(`/?completed=true`, apiUrl) : new URL(`/`, apiUrl);
+  const url = hideCompleted != undefined ? new URL(`/?completed=false`, apiUrl) : new URL(`/`, apiUrl);
   const response = await fetch(url.href);
 
   return response.json();

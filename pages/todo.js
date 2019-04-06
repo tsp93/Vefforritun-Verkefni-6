@@ -6,16 +6,24 @@ import TodoDetail from '../components/todo-detail/TodoDetail';
 
 import { getTodo } from '../api';
 
+/**
+ * Verkefnissíða
+ */
 function Home(props) {
-  const { id, todo } = props;
+  const { todo } = props;
   
   return (
-    <Layout title={`Verkefni ${id}`}>
-      <TodoDetail todo={todo} />
+    <Layout title={`${todo.title}`}>
+      <TodoDetail
+        todo={todo}
+      />
     </Layout>
   );
 }
 
+/**
+ * Upphafsstilla gildi
+ */
 Home.getInitialProps = async ({ query }) => {
   const { id } = query;
 

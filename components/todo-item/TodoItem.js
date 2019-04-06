@@ -4,19 +4,22 @@ import Link from 'next/link';
 import { updateTodo } from '../../api';
 import css from './TodoItem.css';
 
-// Verkefni í lista á forsíðu
+/**
+ * Verkefni í lista á forsíðu
+ */
 export default function todoItem(props) {
   const { item } = props;
 
   const [loading, setLoading] = useState(false);
   const [checked, setChecked] = useState(item.completed);
 
+  // Meðhöndlar hak í checkbox
   async function handleCheck() {
     setLoading(true);
 
     const test = await updateTodo(item.id, { completed: !checked });
 
-    setChecked(test.completed ? !checked : checked);
+    setChecked(!checked);
     setLoading(false);
   }
 
