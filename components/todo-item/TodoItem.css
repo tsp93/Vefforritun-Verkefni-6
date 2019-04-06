@@ -1,12 +1,15 @@
 .item {
-  margin-bottom: 10px;
+  align-items: baseline;
+  display: flex;
+  flex-flow: row;
   font-size: 1.5rem;
+  margin-bottom: 10px;
 }
 
 .item__link {
-  text-decoration: none;
   color: #000;
   padding-left: 10px;
+  text-decoration: none;
 }
 
 .item__input {
@@ -14,6 +17,6 @@
 }
 
 .item__due {
-  padding-left: 1rem;
   font-size: 1rem;
+  padding-left: 1rem;
 }

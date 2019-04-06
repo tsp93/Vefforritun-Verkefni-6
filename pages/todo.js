@@ -7,10 +7,21 @@ import TodoDetail from '../components/todo-detail/TodoDetail';
 import { getTodo } from '../api';
 
 function Home(props) {
-
+  const { id, todo } = props;
+  
   return (
-    null
+    <Layout title={`Verkefni ${id}`}>
+      <TodoDetail todo={todo} />
+    </Layout>
   );
+}
+
+Home.getInitialProps = async ({ query }) => {
+  const { id } = query;
+
+  const todo = getTodo(id);
+
+  return { id, todo };
 }
 
 export default Home
