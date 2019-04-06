@@ -5,7 +5,7 @@ import Button from '../components/button/Button';
 import Todos from '../components/todos/Todos';
 import Form from '../components/form/Form';
 
-import { getTodos, updateTodo } from '../api';
+import { getTodos } from '../api';
 
 /**
  * Forsíða
@@ -47,13 +47,9 @@ function Home(props) {
         (<p>Sækir verkefni...</p>)
       )}
       {!loading && (
-      <Todos
-        todos={todos}
-      />
+      <Todos todos={todos} />
       )}
-      <Form
-        onCreated={updateList}
-      />
+      <Form onCreated={updateList} />
     </Layout>
   );
 }

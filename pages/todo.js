@@ -11,12 +11,14 @@ import { getTodo } from '../api';
  */
 function Home(props) {
   const { todo } = props;
+
+  if (!todo) {
+    return <Error statusCode={404} />;
+  }
   
   return (
     <Layout title={`${todo.title}`}>
-      <TodoDetail
-        todo={todo}
-      />
+      <TodoDetail todo={todo} />
     </Layout>
   );
 }
@@ -27,9 +29,9 @@ function Home(props) {
 Home.getInitialProps = async ({ query }) => {
   const { id } = query;
 
-  const todo = getTodo(id);
+  const todo = await getTodo(id);
 
-  return { id, todo };
+  return { todo };
 }
 
 export default Home

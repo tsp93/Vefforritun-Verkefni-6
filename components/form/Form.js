@@ -24,12 +24,12 @@ export default function Form(props) {
     setLoading(true);
     setErrors([]);
 
-    let due = undefined;
+    let due = data.date;
     if (data.date != null) {
       try {
         due = new Date(data.date).toISOString();
       } catch (error) {
-        due = data.date;
+        console.error(error);
       }
     }
   
