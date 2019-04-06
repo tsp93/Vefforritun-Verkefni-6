@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 
 import css from './Errors.css'
 
+/**
+ * Birtir villur fyrir form
+ */
 export default function Errors(props) {
   const { errors } = props;
 

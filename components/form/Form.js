@@ -23,8 +23,18 @@ export default function Form(props) {
     e.preventDefault();
     setLoading(true);
     setErrors([]);
+
+    let due = undefined;
+    if (data.date != null) {
+      try {
+        due = new Date(data.date).toISOString();
+      } catch (error) {
+        due = data.date;
+      }
+    }
   
-    const todo = await addTodo(data.title, data.date);
+    const todo = await addTodo(data.title, due);
+
     if(todo.title == null) {
       setErrors(todo);
     } else {
@@ -37,14 +47,17 @@ export default function Form(props) {
 
   // Handler fyrir breytingu í inputti
   function onChange(e) {
-    setData({ [e.target.name]: e.target.value });
+    setData({
+      ...data,
+      [e.target.name]: e.target.value,
+    });
   }
 
   return (
     <React.Fragment>
       <form className={css.form} onSubmit={onSubmit}>
       {loading && (
-        (<p>Býr til todo...</p>)
+        (<p>Bý til todo...</p>)
       )}
       {!loading && (
         <React.Fragment>

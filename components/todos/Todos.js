@@ -11,9 +11,9 @@ export default function Todos(props) {
 
   return (
     <ul className={css.todos}>
-      {todos.map((item, i) => (
+      {todos.map((item) => (
         <TodoItem
-          key={i}
+          key={item.id}
           item={item}
         />
       ))}
