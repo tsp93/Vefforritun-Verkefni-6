@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 const next = require('next');
 
@@ -20,9 +22,13 @@ app
       return handle(req, res)
     });
 
-    server.listen(3000, err => {
+    const {
+      PORT: port = 3000,
+    } = process.env;
+
+    server.listen(port, err => {
       if (err) throw err;
-      console.info('> Ready on http://localhost:3000');
+      console.info(`> Ready on http://localhost:${port}`);
     });
   })
   .catch(ex => {
