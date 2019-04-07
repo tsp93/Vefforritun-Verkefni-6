@@ -10,6 +10,14 @@
   margin-bottom: 1rem;
 }
 
+.todoDetail__form {
+  width: 100%;
+}
+
+.todoDetail__form >:nth-child(2) {
+  margin-right: 60%;    /* Push following flex items to the right */
+}
+
 .todoDetail__term {
   flex: 1 1 25%;
   display: flex;

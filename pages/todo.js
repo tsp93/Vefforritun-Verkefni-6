@@ -10,15 +10,23 @@ import { getTodo } from '../api';
  * Verkefnissíða
  */
 function Home(props) {
-  const { todo } = props;
+  const { initTodo } = props;
 
-  if (!todo) {
+  if (initTodo.error != null) {
     return <Error statusCode={404} />;
+  }
+
+  const [todo, setTodo] = useState(initTodo);
+
+  async function showUpdated() {
+    const newTodo = await getTodo(todo.id);
+
+    setTodo(newTodo);
   }
   
   return (
     <Layout title={`${todo.title}`}>
-      <TodoDetail todo={todo} />
+      <TodoDetail todo={todo} onUpdated={showUpdated}/>
     </Layout>
   );
 }
@@ -29,9 +37,9 @@ function Home(props) {
 Home.getInitialProps = async ({ query }) => {
   const { id } = query;
 
-  const todo = await getTodo(id);
+  const initTodo = await getTodo(id);
 
-  return { todo };
+  return { initTodo };
 }
 
 export default Home

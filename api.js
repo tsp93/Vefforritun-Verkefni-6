@@ -13,10 +13,10 @@ const { apiUrl } = publicRuntimeConfig;
 export async function deleteTodo(id) {
   const url = new URL(`/${id}`, apiUrl);
   const response = await fetch(url.href, {
-    method: 'DELETE'
+    method: 'DELETE',
   });
 
-  return response.json();
+  return response.ok;
 }
 
 /**
